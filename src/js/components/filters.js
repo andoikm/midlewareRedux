@@ -1,8 +1,32 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {filterData} from '../actions/actionInitialData'
 
 class Filters extends React.Component {
-  
+   constructor(props){
+       super(props);
+       this.currentDate = false;
+   }
+
+  changeDateType = (date) => new Date(date).toDateString();
+
+  filterDate = () => (
+    (this.props.store.filterDateReducer.date || []).map((item)=>(
+        <option key={item} value={item} >{this.changeDateType(item)}</option>
+    ))
+  );
+
+
+  filterByDate = ( )=> {
+      // console.log(this.currentDate.value);
+      // this.props.store.dispatch(
+      //
+      // )
+  };
+
+
+
+
 
   getItem = () => (
      this.props.store.dataReducer.data.map((val)=> (
@@ -20,9 +44,20 @@ class Filters extends React.Component {
         ))
    );
   render() {
+    console.log(this.props.store);
     return (
         <div>
-            <div>{this.getItem()}</div>
+            <div className="leftPart left">
+                <select
+                    onChange={this.filterByDate}
+                    ref={el=> this.currentDate = el}
+                >
+                    {this.filterDate()}
+                    </select>
+            </div>
+            <div className="center left">{this.getItem()}</div>
+            <div className="rightPart left"></div>
+            <div className="clear"></div>
         </div>
     );
   }

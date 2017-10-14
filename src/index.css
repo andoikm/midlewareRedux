@@ -40,3 +40,24 @@ h6
   font-size: 13px;
   height: 29px;
 }
+.left
+{
+  float: left;
+}
+
+.leftPart
+{
+  width: 20%;
+}
+.rightPart
+{
+  width: 30%;
+}
+.center
+{
+  width: 60%;
+}
+.clear
+{
+  clear: both;
+}
