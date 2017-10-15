@@ -1,3 +1,0 @@
-export const GET_INITIAL_DATA = "GET_INITIAL_DATA";
-export const SET_FILTER_DATE = "SET_FILTER_DATE";
-export const FILTER_DATE = "FILTER_DATE";

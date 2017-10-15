@@ -1,6 +1,5 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {filterData} from '../actions/actionInitialData'
 
 class Filters extends React.Component {
    constructor(props){
@@ -18,33 +17,33 @@ class Filters extends React.Component {
 
 
   filterByDate = ( )=> {
-      // console.log(this.currentDate.value);
-      // this.props.store.dispatch(
-      //
-      // )
+      console.log(this.currentDate.value);
+      // this.props.store.dispatch(filterData({
+      //     action : 'FILTER_BY_DATE'
+      // }))
   };
 
 
 
 
 
-  getItem = () => (
-     this.props.store.dataReducer.data.map((val)=> (
-            <div key={val.id} className="col-4">
-                <div className="blockStyle">
-                    <h6>{val.title}</h6>
-                    <div className="flex">
-                        <span>userId : {val.userId}</span>
-                        <span>postId : {val.id}</span>
-                        <span>Date : {val.ts}</span>
-                    </div>
-                    <div className="textBox">{val.body}</div>
-                </div>
-            </div>
-        ))
-   );
+  getItem = () => {
+
+          return this.props.store.dataReducer.data.map((val)=> (
+              <div key={val.id} className="col-4">
+                  <div className="blockStyle">
+                      <h6>{val.title}</h6>
+                      <div className="flex">
+                          <span>userId : {val.userId}</span>
+                          <span>postId : {val.id}</span>
+                          <span>Date : {this.changeDateType(val.ts)}</span>
+                      </div>
+                      <div className="textBox">{val.body}</div>
+                  </div>
+              </div>
+          ))
+  };
   render() {
-    console.log(this.props.store);
     return (
         <div>
             <div className="leftPart left">

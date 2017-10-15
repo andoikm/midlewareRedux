@@ -7,7 +7,6 @@ import {Provider} from 'react-redux';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 import dataChanger from './js/middleware/dataChanger';
-import filterGenerate from './js/middleware/filterGenerate'
 import { HashRouter as Router, Route } from 'react-router-dom';
 
 import { init } from  './js/helpers/bootstrap';
