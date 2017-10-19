@@ -12,7 +12,7 @@ body {
 .blockStyle
 {
   background-color: #e8e8e8;
-  border-radius: 25px;
+  border-radius: 10px;
   border: 1px solid #cccbcb;
   padding:10px;
 }
@@ -51,7 +51,7 @@ h6
 }
 .rightPart
 {
-  width: 30%;
+  width: 20%;
 }
 .center
 {
@@ -60,4 +60,97 @@ h6
 .clear
 {
   clear: both;
+}
+.btnGroup
+{
+  display: flex;
+  text-align: center;
+}
+.btnGroup span
+{
+  display: inline-block;
+  border: 1px solid #ada8a8;
+  border-radius: 10px;
+  width: 30px;
+  text-align: center;
+  margin: 0 5px;
+  overflow: hidden;
+  background: #d8d7d7;
+  font-weight: bold;
+}
+.minus
+{
+  margin-top: 1px;
+}
+.btnGroup span input
+{
+  width: 100%;
+  text-align: center;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+}
+.btnGroup span:hover
+{
+  cursor: pointer;
+  background: green;
+  color: white;
+}
+img
+{
+  max-width: 100%;
+  max-height: 100%;
+}
+.addToCard
+{
+  background: none !important;
+  border: none !important;
+}
+.addToCard img
+{
+  max-height: 17px;
+}
+#cart img
+{
+  max-width: 100px;
+}
+#root>div
+{
+  display: flex;
+}
+
+#root>div>.left
+{
+  margin: 10px;
+  background: #f5f5f5;
+  border-radius: 10px;
+  border:1px solid #e8e8e8 !important;
+}
+.filterRow label
+{
+  display: block;
+  margin-bottom: 5px;
+  text-align: center;
+}
+.filterRow select
+{
+  border: 1px solid #ada8a8;
+  border-radius: 10px;
+  background: #ffffff;
+  outline: none;
+  width: 100%;
+  padding: 5px;
+}
+.filterRow p
+{
+  padding: 0;
+  margin: 0;
+}
+.filterRow
+{
+  background: #e8e8e8;
+  border: 1px solid #cccbcb;
+  margin: 10px;
+  padding: 5px 10px;
+  border-radius: 10px;
 }

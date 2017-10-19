@@ -1,10 +1,12 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {filterByDate} from '../actions/actionInitialData';
 
 class Filters extends React.Component {
    constructor(props){
        super(props);
        this.currentDate = false;
+       this.sortBy = false;
    }
 
   changeDateType = (date) => new Date(date).toDateString();
@@ -16,48 +18,39 @@ class Filters extends React.Component {
   );
 
 
-  filterByDate = ( )=> {
-      console.log(this.currentDate.value);
-      // this.props.store.dispatch(filterData({
-      //     action : 'FILTER_BY_DATE'
-      // }))
+  filterBy = ()=> {
+      this.props.dispatch(filterByDate({
+          byDate : this.currentDate.value,
+          sortBy : this.sortBy.value
+      }));
   };
 
-
-
-
-
-  getItem = () => {
-
-          return this.props.store.dataReducer.data.map((val)=> (
-              <div key={val.id} className="col-4">
-                  <div className="blockStyle">
-                      <h6>{val.title}</h6>
-                      <div className="flex">
-                          <span>userId : {val.userId}</span>
-                          <span>postId : {val.id}</span>
-                          <span>Date : {this.changeDateType(val.ts)}</span>
-                      </div>
-                      <div className="textBox">{val.body}</div>
-                  </div>
-              </div>
-          ))
-  };
   render() {
+      console.log(this.props.store);
     return (
-        <div>
-            <div className="leftPart left">
-                <select
-                    onChange={this.filterByDate}
-                    ref={el=> this.currentDate = el}
-                >
-                    {this.filterDate()}
+            <div className="leftPart left filterBlock">
+                <div className="filterRow">
+                    <p><label>Select Date</label></p>
+                    <select
+                        onChange={this.filterBy}
+                        ref={el=> this.currentDate = el}
+                    >
+                        {this.filterDate(this.filterBy)}
                     </select>
+                </div>
+                <div className="filterRow">
+                    <p><label>Sort by</label></p>
+                    <select
+                        onChange={this.filterBy}
+                        ref={el => this.sortBy = el}
+                    >
+                        <option value="userId">USER ID</option>
+                        <option value="id">ID</option>
+                        <option value="ts">DATE</option>
+                    </select>
+                </div>
+
             </div>
-            <div className="center left">{this.getItem()}</div>
-            <div className="rightPart left"></div>
-            <div className="clear"></div>
-        </div>
     );
   }
 }

@@ -19,5 +19,12 @@ export const filterByDate = (payload) => (
     }
 );
 
+export const AddToCart = (payload) => (
+    {
+        type : 'ADD_TO_CART',
+        payload
+    }
+);
+
 
 
