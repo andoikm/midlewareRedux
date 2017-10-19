@@ -10,6 +10,19 @@ class Product extends Component {
         };
     }
 
+    prodCount = (e) => {
+        let count = parseInt(e.target.value);
+        if(count >= 0){
+            this.setState({
+                count,
+            });
+        } else {
+            this.setState({
+                count : 0
+            });
+        }
+    };
+
     productCount = (e) => {
         let { count } = this.state;
         if (e.target.innerHTML === '+'){
@@ -34,6 +47,7 @@ class Product extends Component {
         const {item} = this.props;
         return(
             <div key={item.id} className="col-4">
+                { this.props.deleteBtn === 'ok' ? <span className="deleteBtn">x</span> : '' }
                 <div className="blockStyle">
                     <h6>{item.title}</h6>
                     <div className="flex">
@@ -44,7 +58,7 @@ class Product extends Component {
                     <div className="textBox">{item.body}</div>
                     <div className="btnGroup">
                         <span className="minus"  onClick = {this.productCount}>-</span>
-                        <span className="count"><input  defaultValue="0" className="coutNumber" type="text" value={this.state.count}/></span>
+                        <span className="count"><input onChange={this.prodCount} className="coutNumber" type="text" value={this.state.count}/></span>
                         <span className="plus" onClick = {this.productCount} >+</span>
                         <span className="addToCard" onClick={this.addCart}>
                       <img src={cartIcon} alt=""/>

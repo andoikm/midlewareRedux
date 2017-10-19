@@ -10,9 +10,10 @@ class Cart extends React.Component {
         let thad = this;
         return Object.keys(dataReducer).map((key) =>
             <Product
-                     key = {dataReducer[parseInt(key)].id}
-                     item={dataReducer[parseInt(key)].item}
-                     count={dataReducer[parseInt(key)].count}
+                     key = {dataReducer[key].id}
+                     item={dataReducer[key].item}
+                     count={dataReducer[key].count}
+                     deleteBtn="ok"
                      changeDateType={thad.props.changeDateType}
             />
 
