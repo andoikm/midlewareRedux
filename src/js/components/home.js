@@ -8,7 +8,6 @@ class Home extends React.Component {
     constructor(props){
         super(props);
         this.currentDate = false;
-        const store = this.props.store;
         this.state = {
             count : 0
         };
@@ -16,25 +15,21 @@ class Home extends React.Component {
 
     changeDateType = (date) => new Date(date).toDateString();
 
-    sortBy = (sortType) => {
-        debugger;
-    };
+    filtered = (item,filterData) => {
+        if(Object.keys(filterData).length === 0)
+            return true;
 
+        if(filterData.byDate)
+            return item.ts.toString() === filterData.byDate;
+
+    };
 
     getItem = () => {
         let dataReducer = this.props.store.dataReducer;
         let filterData = (this.props.store.filterDateReducer) ? this.props.store.filterDateReducer.filter : false ;
 
         return dataReducer.data
-            .filter((item) => {
-                if(Object.keys(filterData).length) {
-                    if(filterData.byDate){
-                        return item.ts == filterData.byDate;
-                    }
-                }else{
-                    return true;
-                }
-            })
+            .filter((item) => this.filtered(item,filterData))
             .sort(function (a, b) {
               return filterData.sortBy ? a[filterData.sortBy] - b[filterData.sortBy] : 0
             })
@@ -51,7 +46,7 @@ class Home extends React.Component {
             <div>
                 <Filters/>
                 <div className="center left">{this.getItem()}</div>
-                <Cart/>
+                <Cart changeDateType={this.changeDateType}/>
                 <div className="clear"></div>
             </div>
         );

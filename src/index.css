@@ -154,3 +154,24 @@ img
   padding: 5px 10px;
   border-radius: 10px;
 }
+.cartList
+{
+  max-height: 520px;
+  overflow-y: scroll;
+  padding-right: 15px;
+}
+.cartList .col-4
+{
+  width: 100% !important;
+  float: none;
+}
+.cartList .col-4 .textBox
+{
+  height: 60px;
+}
+#cart span
+{
+  font-size: 56px;
+  color: green;
+  margin-top: 34px;
+}

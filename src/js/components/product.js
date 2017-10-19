@@ -5,9 +5,8 @@ import {AddToCart} from '../actions/actionInitialData';
 class Product extends Component {
     constructor(props) {
         super(props);
-
         this.state={
-            count: 0
+            count : this.props.count || 0
         };
     }
 
@@ -26,7 +25,8 @@ class Product extends Component {
     addCart = () => {
         this.props.dispatch(AddToCart({
             id : this.props.item.id,
-            count : this.state.count
+            count : this.state.count,
+            item : this.props.item
         }));
     };
 
@@ -44,7 +44,7 @@ class Product extends Component {
                     <div className="textBox">{item.body}</div>
                     <div className="btnGroup">
                         <span className="minus"  onClick = {this.productCount}>-</span>
-                        <span className="count"><input className="coutNumber" type="text" value={this.state.count}/></span>
+                        <span className="count"><input  defaultValue="0" className="coutNumber" type="text" value={this.state.count}/></span>
                         <span className="plus" onClick = {this.productCount} >+</span>
                         <span className="addToCard" onClick={this.addCart}>
                       <img src={cartIcon} alt=""/>

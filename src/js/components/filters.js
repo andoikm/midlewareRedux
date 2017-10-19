@@ -26,7 +26,6 @@ class Filters extends React.Component {
   };
 
   render() {
-      console.log(this.props.store);
     return (
             <div className="leftPart left filterBlock">
                 <div className="filterRow">
