@@ -13,6 +13,13 @@ const cartReducer = (state = initialData, action) => {
                     ...state,
                     cart:obj
                    };
+        case 'DELETE_FROM_CART' :
+            let currentData = {...state.cart };
+            delete currentData[action.payload];
+            return {
+                ...state,
+                cart:currentData
+            };
         default :
             return state;
     }

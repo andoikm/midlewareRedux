@@ -13,7 +13,7 @@ class Cart extends React.Component {
                      key = {dataReducer[key].id}
                      item={dataReducer[key].item}
                      count={dataReducer[key].count}
-                     deleteBtn="ok"
+                     deleteBtn={key}
                      changeDateType={thad.props.changeDateType}
             />
 

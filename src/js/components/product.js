@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import cartIcon from '../../img/cart.png';
 import {AddToCart} from '../actions/actionInitialData';
+import {deleteProductFromCart} from '../actions/actionInitialData';
 class Product extends Component {
     constructor(props) {
         super(props);
@@ -35,6 +36,10 @@ class Product extends Component {
         });
     };
 
+    deleteProduct = (key) => {
+        this.props.dispatch(deleteProductFromCart(key))
+    };
+
     addCart = () => {
         this.props.dispatch(AddToCart({
             id : this.props.item.id,
@@ -47,7 +52,12 @@ class Product extends Component {
         const {item} = this.props;
         return(
             <div key={item.id} className="col-4">
-                { this.props.deleteBtn === 'ok' ? <span className="deleteBtn">x</span> : '' }
+                { this.props.deleteBtn > 0 &&
+                    <span
+                        className="deleteBtn"
+                        onClick={this.deleteProduct.bind(this,this.props.deleteBtn )}>x
+                    </span>
+                }
                 <div className="blockStyle">
                     <h6>{item.title}</h6>
                     <div className="flex">

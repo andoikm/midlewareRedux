@@ -26,5 +26,12 @@ export const AddToCart = (payload) => (
     }
 );
 
+export const deleteProductFromCart = (payload) => (
+    {
+        type : 'DELETE_FROM_CART',
+        payload
+    }
+);
+
 
 
